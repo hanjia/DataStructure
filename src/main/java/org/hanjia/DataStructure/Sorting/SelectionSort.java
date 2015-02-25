@@ -1,5 +1,13 @@
 package org.hanjia.DataStructure.Sorting;
 
+/**
+ * Selection Sort Algorithm: 
+ * 1) Find the minimum value in the list; 
+ * 2) Swap it with the value in the current position; 
+ * 3) Repeat this process for all the elements until the entire array is sorted
+ * @author hanjia
+ *
+ */
 public class SelectionSort {
 	public static void main(String[] args){
 		int[] array = {2, 5, 3, 6, 8, 4, 7, 1};
