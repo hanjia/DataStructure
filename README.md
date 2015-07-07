@@ -11,7 +11,8 @@ Double: 8 bytes (64 bits).
 ### What is data structure and algorithm?
 
 Data structure is a particular way of organizing and storing data in a computer that it can be used efficiently.
-Algorithm: An algorithm is the step-by-step instructions to solve a given problem.
+
+An algorithm is the step-by-step instructions to solve a given problem.
 
 ### How to compare algorithms?
 - Execution times
