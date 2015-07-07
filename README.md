@@ -95,9 +95,9 @@ Execution time: c0 + c1 * n + c2 * n * n = O(n2)
 	if(length() == 0) { // condition part: c0
 		return false; // then part: c1
 	} else { // else part
-	for(i=0; i < length(); i++) {  // executes n times
+		for(i=0; i < length(); i++) {  // executes n times
 			if(!list[n].equals(otherList.list[n])) // constant c2
-			return false; // constant c3
+				return false; // constant c3
 		}
 	}
  
