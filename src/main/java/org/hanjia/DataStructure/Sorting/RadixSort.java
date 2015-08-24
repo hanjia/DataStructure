@@ -1,5 +1,7 @@
 package org.hanjia.DataStructure.Sorting;
 
+import java.util.Arrays;
+
 /**
  * Reference: 
  * http://algs4.cs.princeton.edu/51radix/
@@ -14,9 +16,7 @@ public class RadixSort {
     private static final int CUTOFF        =  15;   // cutoff to insertion sort
 
 	/**
-	 * 
 	 * Radix LSD sort
-	 * 
 	 */
 	public static void lsdSort(int[] a) {
         int BITS = 32;                 // each int is 32 bits 
@@ -28,16 +28,15 @@ public class RadixSort {
         int[] aux = new int[N];
 
         for (int d = 0; d < W; d++) {         
-            // compute frequency counts
             int[] count = new int[R+1];
-            for (int i = 0; i < N; i++) {           
+            for (int i = 0; i < N; i++) { // compute frequency counts     
                 int c = (a[i] >> BITS_PER_BYTE*d) & MASK;
                 count[c + 1]++;
             }
 
-            // compute cumulates
-            for (int r = 0; r < R; r++)
+            for (int r = 0; r < R; r++) { // compute cumulates
                 count[r+1] += count[r];
+            }
 
             // for most significant byte, 0x80-0xFF comes before 0x00-0x7F
             if (d == W-1) {
@@ -51,23 +50,20 @@ public class RadixSort {
 
             // move data
             for (int i = 0; i < N; i++) {
-                int c = (a[i] >> BITS_PER_BYTE*d) & MASK;
+                int c = (a[i] >> BITS_PER_BYTE * d) & MASK;
                 aux[count[c]++] = a[i];
             }
 
             // copy back
-            for (int i = 0; i < N; i++)
+            for (int i = 0; i < N; i++) {
                 a[i] = aux[i];
+            }
         }
     }
 	
 	/**
-	 * 
 	 * Radix MSD sort
-	 * 
 	 */
-	
-	 // MSD sort array of integers
     public static void msdSort(int[] a) {
         int N = a.length;
         int[] aux = new int[N];
@@ -110,11 +106,14 @@ public class RadixSort {
         if (d == 4) return;
 
         // recursively sort for each character
-        if (count[0] > 0)
+        if (count[0] > 0) {
             sort(a, lo, lo + count[0] - 1, d+1, aux);
-        for (int r = 0; r < R; r++)
+        }
+        
+        for (int r = 0; r < R; r++) {
             if (count[r+1] > count[r])
                 sort(a, lo + count[r], lo + count[r+1] - 1, d+1, aux);
+        }
     }
     
     // insertion sort a[lo..hi], starting at dth character
@@ -132,6 +131,11 @@ public class RadixSort {
     }
 	
 	public static void main(String[] args) {
-		
+		int[] a = {33, 21, 32, 24, 25};
+		lsdSort(a);
+		System.out.println(Arrays.toString(a));
+		int[] b = {29, 30, 62, 44, 65};
+		msdSort(b);
+		System.out.println(Arrays.toString(b));
 	}
 }
