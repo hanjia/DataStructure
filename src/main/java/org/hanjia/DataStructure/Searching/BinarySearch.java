@@ -4,9 +4,10 @@ public class BinarySearch {
 
 	public static void main(String[] args){
 		int[] array = {1, 2, 3, 4, 5, 6, 7, 8};
-		//int index = binarySearchIterative(array, array.length, 3);
-		int index = binarySearchRecursive(array, 0, array.length, 3);
-		System.out.println(index);
+		int index1 = binarySearchIterative(array, array.length, 3);
+		int index2 = binarySearchRecursive(array, 0, array.length, 3);
+		System.out.println(index1);
+		System.out.println(index2);
 	}
 	
 	public static int binarySearchIterative(int[] A, int n, int data){
