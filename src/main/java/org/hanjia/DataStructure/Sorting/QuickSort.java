@@ -9,37 +9,44 @@ public class QuickSort {
 		}
 	}
 	
-	public static int[] quickSort(int[] list, int first, int last){
-		if(first < last){
-			int pivotIndex = partition(list,first,last);
-			quickSort(list, first, pivotIndex - 1);
-			quickSort(list, pivotIndex + 1, last);
+	public static int[] quickSort(int[] list, int start, int end) {
+		if (start < end) {
+			int pivotIndex = partition(list, start, end);
+			quickSort(list, start, pivotIndex - 1); // To sort the first part
+			quickSort(list, pivotIndex + 1, end); // To sort the second part
 		}
 		return list;
 	}
 	
-	public static int partition(int[] list, int first, int last){
-		int pivot = list[first];
-		int low = first + 1;
-		int high = last;
-		while(high > low){
-			while(low <= high && list[low] <= pivot) low++;
-			while(low <= high && list[high] > pivot) high--;
-			if(high > low){
+	public static int partition(int[] list, int start, int end){
+		int pivot = list[start];
+		int low = start + 1;
+		int high = end;
+		
+		while (high > low) {
+			while (low <= high && list[low] <= pivot) {
+				low++;
+			}
+			while (low <= high && list[high] > pivot) {
+				high--;
+			}
+			if (high > low) {
 				int temp = list[high];
 				list[high] = list[low];
 				list[low] = temp;
 			}
 		}
+
+		while (high > start && list[high] >= pivot) {
+			high--;
+		}
 		
-		while(high > first && list[high] >= pivot)	high--;
-		
-		if(pivot > list[high]){
-			list[first] = list[high];
+		if (pivot > list[high]) {
+			list[start] = list[high];
 			list[high] = pivot;
 			return high;
-		}else{
-			return first;
 		}
+		
+		return start;
 	}
 }
