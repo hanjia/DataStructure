@@ -65,64 +65,64 @@ public class HeapSort {
 	static int N;
 	
 	public static void main(String[] args){
-		int[] array = {2, 5, 3, 6, 8, 4, 7, 1};
-		int[] sortedArray = heapSort(array, array.length);
-		for(int element: sortedArray){
+		int[] array = {2, 5, 3, 8, 4, 7, 1, 6};
+		//heapSort(array, array.length);
+		heapSort(array);
+		for(int element: array){
 			System.out.print(element + ",");
 		}
 	}
 	
-//	public static int[] heapSort(int[] list){
-//		for(int i = 1; i < list.length; i++){
-//			makeHeap(list,i);
-//		}
-//		for(int last = list.length - 1; last > 0; last--){
-//			int temp = list[last];
-//			list[last] = list[0];
-//			list[0] = temp;
-//			rebuildHeap(list, last);
-//		}
-//		return list;
-//	}
-//	
-//	public static void makeHeap(int[] list, int k){
-//		int currentIndex = k;
-//		while(currentIndex > 0 && list[currentIndex] > list[(currentIndex - 1)/2]){
-//			int temp = list[currentIndex];
-//			list[currentIndex] = list[(currentIndex - 1)/2];
-//			list[(currentIndex - 1)/2] = temp;
-//			currentIndex = (currentIndex - 1)/2;
-//		}
-//	}
-//	
-//	public static void rebuildHeap(int[] list, int last){
-//		int currentIndex = 0;
-//		boolean isHeap = false;
-//		while(isHeap){
-//			int leftChildIndex = 2 * currentIndex + 1;
-//			int rightChildIndex = 2 * currentIndex + 2;
-//			int maxIndex = currentIndex;
-//			if(leftChildIndex <= last && list[maxIndex] < list[leftChildIndex]){
-//				int temp = list[maxIndex];
-//				list[maxIndex] = list[leftChildIndex];
-//				list[leftChildIndex] = temp;
-//			}
-//			if(rightChildIndex <= last && list[maxIndex] < list[rightChildIndex]){
-//				int temp = list[maxIndex];
-//				list[maxIndex] = list[rightChildIndex];
-//				list[rightChildIndex] = temp;
-//			}
-//			if(maxIndex != currentIndex){
-//				break;
-//			}else{
-//				isHeap = true;
-//			}
-//			
-//		}
-//	}
+	public static void heapSort(int[] array){
+		for(int i = 1; i < array.length; i++){
+			makeHeap(array,i);
+		}
+
+		for(int last = array.length - 1; last > 0; ){
+			int temp = array[last];
+			array[last] = array[0];
+			array[0] = temp;
+			rebuildHeap(array, --last);
+		}
+	}
+	
+	public static void makeHeap(int[] array, int k){
+		int current = k;
+		while(current > 0 && array[current] > array[(current - 1)/2]){
+			int temp = array[current];
+			array[current] = array[(current - 1)/2];
+			array[(current - 1)/2] = temp;
+			current = (current - 1)/2;
+		}
+	}
+	
+	public static void rebuildHeap(int[] array, int last){
+		int current = 0;
+
+		while (true) {
+			int left = 2 * current + 1;
+			int right = 2 * current + 2;
+			int max = current;
+			if (left <= last && array[max] < array[left]) {
+				max = left;
+			}
+			if (right <= last && array[max] < array[right]) {
+				max = right;
+			}
+
+			if (max != current) {
+				int temp = array[max];
+				array[max] = array[current];
+				array[current] = temp;
+				current = max;
+			} else {
+				break;
+			}
+		}
+	}
 	
 	/**
-	public static int[] heapSort(int arr[])
+	public static void heapSort(int arr[])
     {       
         heapify(arr);        
         for (int i = N; i > 0; i--)
@@ -131,7 +131,6 @@ public class HeapSort {
             N = N-1;
             maxheap(arr, 0);
         }
-        return arr;
     } 
 	
 	// Function to build a heap   
@@ -169,22 +168,22 @@ public class HeapSort {
     }
     **/
 
-	public static int[] heapSort(int[] A, int n){
-		Heap h = new Heap(n,0);
-		int oldSize, i;
-		h.buildHeap(h, A, n);
-		
-		oldSize = h.count;
-		for(i = n-1; i > 0; i--){
-			int temp = h.array[0];
-			h.array[0] = h.array[i];
-			h.array[i] = temp;
-			h.count--;
-			h.siftDown(0);
-		}
-		h.count = oldSize;
-		return h.array;
-	}
+//	public static int[] heapSort(int[] A, int n){
+//		Heap h = new Heap(n,0);
+//		int oldSize, i;
+//		h.buildHeap(h, A, n);
+//		
+//		oldSize = h.count;
+//		for(i = n-1; i > 0; i--){
+//			int temp = h.array[0];
+//			h.array[0] = h.array[i];
+//			h.array[i] = temp;
+//			h.count--;
+//			h.siftDown(0);
+//		}
+//		h.count = oldSize;
+//		return h.array;
+//	}
 	
 }
 
