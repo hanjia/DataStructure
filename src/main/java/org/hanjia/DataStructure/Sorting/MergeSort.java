@@ -9,48 +9,45 @@ public class MergeSort {
 
 	public static void main(String[] args){
 		int[] array = { 2, 5, 3, 6, 8, 4, 7, 1 };
-		int[] sortedArray = mergeSort(array);
-		for (int element : sortedArray) {
+		mergeSort(array);
+		for (int element : array) {
 			System.out.print(element + ",");
 		}
 	}
 	
-	public static int[] mergeSort(int[] list){
-		if (list.length > 1) {
-			int[] firstHalf = new int[list.length / 2];
-			System.arraycopy(list, 0, firstHalf, 0, list.length / 2);
+	public static void mergeSort(int[] array){
+		if (array.length > 1) {
+			int[] firstHalf = new int[array.length / 2];
+			System.arraycopy(array, 0, firstHalf, 0, array.length / 2);
 			mergeSort(firstHalf);
 
-			int[] secondHalf = new int[list.length - list.length / 2];
-			System.arraycopy(list, list.length / 2, secondHalf, 0, list.length - list.length / 2);
+			int[] secondHalf = new int[array.length - array.length / 2];
+			System.arraycopy(array, array.length / 2, secondHalf, 0, array.length - array.length / 2);
 			mergeSort(secondHalf);
 
 			int[] temp = merge(firstHalf, secondHalf);
-			System.arraycopy(temp, 0, list, 0, temp.length);
+			System.arraycopy(temp, 0, array, 0, temp.length);
 		}
-		return list;
 	}
 	
-	public static int[] merge(int[] list1, int[] list2){
-		int[] result = new int[list1.length + list2.length];
-		int current1 = 0;
-		int current2 = 0;
-		int current = 0;
+	public static int[] merge(int[] array1, int[] array2){
+		int[] result = new int[array1.length + array2.length];
+		int current = 0, current1 = 0, current2 = 0;
 		
-		while (current1 < list1.length && current2 < list2.length) {
-			if (list1[current1] < list2[current2]) {
-				result[current++] = list1[current1++];
+		while (current1 < array1.length && current2 < array2.length) {
+			if (array1[current1] < array2[current2]) {
+				result[current++] = array1[current1++];
 			} else {
-				result[current++] = list2[current2++];
+				result[current++] = array2[current2++];
 			}
 		}
 
-		while (current1 < list1.length) {
-			result[current++] = list1[current1++];
+		while (current1 < array1.length) {
+			result[current++] = array1[current1++];
 		}
 
-		while (current2 < list2.length) {
-			result[current++] = list2[current2++];
+		while (current2 < array2.length) {
+			result[current++] = array2[current2++];
 		}
 			
 		return result;	

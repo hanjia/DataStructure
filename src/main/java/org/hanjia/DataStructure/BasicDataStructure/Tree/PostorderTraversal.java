@@ -1,4 +1,4 @@
-package org.hanjia.DataStructure.TreeTraversal;
+package org.hanjia.DataStructure.BasicDataStructure.Tree;
 
 import java.util.Stack;
 

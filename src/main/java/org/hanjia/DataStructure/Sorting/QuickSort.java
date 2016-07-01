@@ -3,47 +3,46 @@ package org.hanjia.DataStructure.Sorting;
 public class QuickSort {
 	public static void main(String[] args){
 		int[] array = {2, 5, 3, 6, 8, 4, 7, 1};
-		int[] sortedArray = quickSort(array, 0 , 7);
-		for(int element: sortedArray){
+		quickSort(array, 0 , 7);
+		for(int element: array){
 			System.out.print(element + ",");
 		}
 	}
 	
-	public static int[] quickSort(int[] list, int start, int end) {
+	public static void quickSort(int[] array, int start, int end) {
 		if (start < end) {
-			int pivotIndex = partition(list, start, end);
-			quickSort(list, start, pivotIndex - 1); // To sort the first part
-			quickSort(list, pivotIndex + 1, end); // To sort the second part
+			int pivotIndex = partition(array, start, end);
+			quickSort(array, start, pivotIndex - 1); // To sort the first part
+			quickSort(array, pivotIndex + 1, end); // To sort the second part
 		}
-		return list;
 	}
 	
-	public static int partition(int[] list, int start, int end){
-		int pivot = list[start];
+	public static int partition(int[] array, int start, int end){
+		int pivot = array[start];
 		int low = start + 1;
 		int high = end;
 		
 		while (high > low) {
-			while (low <= high && list[low] <= pivot) {
+			while (low <= high && array[low] <= pivot) {
 				low++;
 			}
-			while (low <= high && list[high] > pivot) {
+			while (low <= high && array[high] > pivot) {
 				high--;
 			}
 			if (high > low) {
-				int temp = list[high];
-				list[high] = list[low];
-				list[low] = temp;
+				int temp = array[high];
+				array[high] = array[low];
+				array[low] = temp;
 			}
 		}
 
-		while (high > start && list[high] >= pivot) {
+		while (high > start && array[high] >= pivot) {
 			high--;
 		}
 		
-		if (pivot > list[high]) {
-			list[start] = list[high];
-			list[high] = pivot;
+		if (pivot > array[high]) {
+			array[start] = array[high];
+			array[high] = pivot;
 			return high;
 		}
 		
