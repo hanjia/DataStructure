@@ -12,19 +12,20 @@ public class PreorderTraversal {
 	}
 	
 	public static void preorderTraversalIterative(BinaryTreeNode root){
-		if(root == null) return;
-		Stack<BinaryTreeNode> s = new Stack<BinaryTreeNode>();
-		s.push(root);
+		if(root == null) 
+			return;
+		Stack<BinaryTreeNode> stack = new Stack<BinaryTreeNode>();
+		stack.push(root);
 		
-		while(!s.isEmpty()){
-			root = s.pop();
+		while(!stack.isEmpty()){
+			root = stack.pop();
 			System.out.print(root.value + ",");
 			
 			if(root.right != null){
-				s.push(root.right);
+				stack.push(root.right);
 			}			
 			if(root.left != null){
-				s.push(root.left);
+				stack.push(root.left);
 			}			
 		}
 		

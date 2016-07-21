@@ -13,7 +13,8 @@ public class InorderTraversal {
 	}
 	
 	public static void inorderTraversalIterative(BinaryTreeNode root){
-		if(root == null) return;
+		if(root == null) 
+			return;
 		Stack<BinaryTreeNode> s = new Stack<BinaryTreeNode>();
 		
 		while(true){
@@ -22,7 +23,8 @@ public class InorderTraversal {
 				root = root.left;
 			}
 			
-			if(s.isEmpty()) break;
+			if(s.isEmpty()) 
+				break;
 			root = s.pop();
 			System.out.print(root.value + ",");			
 			root = root.right;
