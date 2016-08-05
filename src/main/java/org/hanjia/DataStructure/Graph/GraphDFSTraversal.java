@@ -2,12 +2,8 @@ package org.hanjia.DataStructure.Graph;
 
 import java.util.Stack;
 
-public class GraphDFSTraversal {
-	private final int MAX_VERTICES = 20;
+public class GraphDFSTraversal extends Graph {
 	
-	private Vertex[] vertexArray;
-	private int[][] adjacentMatrix;
-	private int vertexCount;
 	private Stack<Integer> stack;
 	
 	public GraphDFSTraversal() {

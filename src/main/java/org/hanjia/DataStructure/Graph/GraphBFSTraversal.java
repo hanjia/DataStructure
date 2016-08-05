@@ -3,12 +3,8 @@ package org.hanjia.DataStructure.Graph;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class GraphBFSTraversal {
-	private final int MAX_VERTICES = 20;
+public class GraphBFSTraversal extends Graph {
 	
-	private Vertex[] vertexArray;
-	private int[][] adjacentMatrix;
-	private int vertexCount;
 	private Queue<Integer> queue;
 	
 	public GraphBFSTraversal() {
@@ -36,9 +32,9 @@ public class GraphBFSTraversal {
 		showVertex(0);
 		queue.add(0);
 		
-		int next;
 		while (!queue.isEmpty()) {
 			int current = queue.poll();
+			int next;
 			while ((next = getAdjacentUnvisitedVertex(current)) != -1) {
 				vertexArray[next].visited = true;
 				showVertex(next);
