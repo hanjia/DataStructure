@@ -14,19 +14,6 @@ public class GraphBFSTraversal extends Graph {
 		queue = new LinkedList<Integer>();
 	}
 	
-	public void addVertex(String label) {
-		vertexArray[vertexCount++] = new Vertex(label);
-	}
-	
-	public void addEdge(int start, int end) {
-		adjacentMatrix[start][end] = 1;
-		adjacentMatrix[end][start] = 1;
-	}
-	
-	public void showVertex(int index) {
-		System.out.println(vertexArray[index].label);
-	}
-	
 	public void bfs() {
 		vertexArray[0].visited = true;
 		showVertex(0);
@@ -46,12 +33,20 @@ public class GraphBFSTraversal extends Graph {
 			vertexArray[i].visited = false;
 		}
 	}
-	
-	public int getAdjacentUnvisitedVertex(int current) {
-		for (int target = 0; target < vertexCount; target++) {
-			if (adjacentMatrix[current][target] == 1 && vertexArray[target].visited == false)
-				return target;
-		}
-		return -1;
+
+	public static void main(String[] args) {
+		GraphBFSTraversal traversal = new GraphBFSTraversal();
+		traversal.addVertex("1");
+		traversal.addVertex("2");
+		traversal.addVertex("3");
+		traversal.addVertex("4");
+		traversal.addVertex("5");
+		traversal.addEdge(0, 1);
+		traversal.addEdge(0, 2);
+		traversal.addEdge(0, 3);
+		traversal.addEdge(0, 4);
+		traversal.addEdge(1, 2);
+		traversal.addEdge(1, 4);		
+		traversal.bfs();	
 	}
 }
