@@ -1,12 +1,12 @@
 package org.hanjia.DataStructure.Sorting;
 
+import java.util.Arrays;
+
 public class QuickSort {
 	public static void main(String[] args){
 		int[] array = {2, 5, 3, 6, 8, 4, 7, 1};
 		quickSort(array, 0 , 7);
-		for(int element: array){
-			System.out.print(element + ",");
-		}
+		System.out.println(Arrays.toString(array));
 	}
 	
 	public static void quickSort(int[] array, int start, int end) {

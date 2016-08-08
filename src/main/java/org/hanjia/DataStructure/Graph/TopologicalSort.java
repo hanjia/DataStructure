@@ -1,5 +1,6 @@
 package org.hanjia.DataStructure.Graph;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -31,7 +32,6 @@ public class TopologicalSort extends Graph{
 		while (!queue.isEmpty()) {
 			int current = queue.poll();
 			result[current] = ++counter;
-			showVertex(current);
 			for (Integer next: getAdjacentVertex(current)) {
 				if (--inDegrees[next] == 0) { // To make sure each vertex will only be examined once
 					queue.add(next);
@@ -59,7 +59,7 @@ public class TopologicalSort extends Graph{
 		sort.addEdge(2, 3);
 		sort.addEdge(2, 4);
 		sort.addEdge(3, 4);
-		sort.topologicalSortBFS(sort);	
+		System.out.println(Arrays.toString(sort.topologicalSortBFS(sort)));	
 	}
 	
 }
