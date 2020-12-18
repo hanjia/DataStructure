@@ -1,4 +1,4 @@
-package org.hanjia.DataStructure.Sorting;
+package org.hanjia.datastructure.sorting;
 
 import java.util.Arrays;
 

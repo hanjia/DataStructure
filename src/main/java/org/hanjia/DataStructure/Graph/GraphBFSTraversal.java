@@ -1,4 +1,4 @@
-package org.hanjia.DataStructure.Graph;
+package org.hanjia.datastructure.graph;
 
 import java.util.LinkedList;
 import java.util.Queue;

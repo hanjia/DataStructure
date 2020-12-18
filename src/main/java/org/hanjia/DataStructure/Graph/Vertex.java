@@ -1,4 +1,4 @@
-package org.hanjia.DataStructure.Graph;
+package org.hanjia.datastructure.graph;
 
 public class Vertex {
 	public String label;

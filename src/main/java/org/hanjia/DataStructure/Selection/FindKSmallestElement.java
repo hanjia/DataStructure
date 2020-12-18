@@ -1,4 +1,4 @@
-package org.hanjia.DataStructure.Selection;
+package org.hanjia.datastructure.selection;
 
 public class FindKSmallestElement {
 

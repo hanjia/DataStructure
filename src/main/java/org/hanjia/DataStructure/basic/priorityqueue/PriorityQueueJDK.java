@@ -1,4 +1,4 @@
-package org.hanjia.DataStructure.BasicDataStructure;
+package org.hanjia.datastructure.basic.priorityqueue;
 
 import java.util.PriorityQueue;
 import java.util.Comparator;
